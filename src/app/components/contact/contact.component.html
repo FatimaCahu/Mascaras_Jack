@@ -1,0 +1,87 @@
+<section class="contact" id="contacto">
+  <div class="container contact__row">
+    <div class="contact__info">
+      <span class="tag">Contacto</span>
+      <h2>Cuéntanos qué máscara traes en mente</h2>
+      <p>
+        Respondemos en menos de 24 horas. Si tu pedido es para una función,
+        dinos la fecha para apartar tiempo de costura.
+      </p>
+
+      <ul class="contact__list">
+        <li>
+          <strong>Taller</strong>
+          <span>Calle Cuauhtémoc 142, Barrio de la Arena, Puebla, Pue.</span>
+        </li>
+        <li>
+          <strong>Teléfono / WhatsApp</strong>
+          <span>+52 222 555 0134</span>
+        </li>
+        <li>
+          <strong>Correo</strong>
+          <span>hola&#64;mascarasjack.mx</span>
+        </li>
+        <li>
+          <strong>Horario</strong>
+          <span>Lunes a sábado, 10:00 a 19:00</span>
+        </li>
+      </ul>
+    </div>
+
+    <form class="contact__form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      @if (submitted()) {
+        <div class="contact__success" role="status">
+          Recibimos tu mensaje. Te contactaremos pronto para afinar los detalles de tu pieza.
+        </div>
+      }
+
+      <div class="field">
+        <label for="name">Nombre</label>
+        <input id="name" type="text" formControlName="name" placeholder="Tu nombre completo" />
+        @if (f.name.invalid && f.name.touched) {
+          <span class="field__error">Escribe tu nombre (mínimo 2 letras).</span>
+        }
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="email">Correo</label>
+          <input id="email" type="email" formControlName="email" placeholder="tu&#64;correo.com" />
+          @if (f.email.invalid && f.email.touched) {
+            <span class="field__error">Ingresa un correo válido.</span>
+          }
+        </div>
+
+        <div class="field">
+          <label for="phone">Teléfono (opcional)</label>
+          <input id="phone" type="tel" formControlName="phone" placeholder="222 000 0000" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="interest">Me interesa</label>
+        <select id="interest" formControlName="interest">
+          <option value="mascara-ring">Máscara de ring</option>
+          <option value="mascara-coleccion">Pieza de colección</option>
+          <option value="ropa">Ropa</option>
+          <option value="pedido-especial">Pedido especial / a medida</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="message">Mensaje</label>
+        <textarea
+          id="message"
+          rows="4"
+          formControlName="message"
+          placeholder="Cuéntanos el diseño, colores o fecha que necesitas"
+        ></textarea>
+        @if (f.message.invalid && f.message.touched) {
+          <span class="field__error">Cuéntanos un poco más (mínimo 10 caracteres).</span>
+        }
+      </div>
+
+      <button type="submit" class="btn contact__submit">Enviar mensaje</button>
+    </form>
+  </div>
+</section>

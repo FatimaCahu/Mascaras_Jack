@@ -1,0 +1,36 @@
+.footer {
+  background: var(--ink);
+  padding: 26px 0;
+}
+
+.footer__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  font-size: 0.85rem;
+  color: var(--on-dark-dim);
+}
+
+.footer__social {
+  display: flex;
+  gap: 20px;
+
+  a {
+    text-decoration: none;
+    color: var(--on-dark-dim);
+    font-weight: 600;
+
+    &:hover {
+      color: var(--gold-bright);
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .footer__row {
+    flex-direction: column;
+    text-align: center;
+  }
+}

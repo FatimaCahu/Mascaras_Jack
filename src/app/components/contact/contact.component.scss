@@ -1,0 +1,128 @@
+.contact {
+  padding: 90px 0;
+  background: var(--bg-alt);
+}
+
+.contact__row {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 60px;
+}
+
+.contact__info p {
+  margin-top: 14px;
+  max-width: 42ch;
+}
+
+.contact__list {
+  list-style: none;
+  margin: 40px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--surface-line);
+  }
+
+  strong {
+    color: var(--gold);
+    font-size: 0.85rem;
+  }
+
+  span {
+    color: var(--ink);
+  }
+}
+
+.contact__form {
+  background: var(--surface);
+  padding: 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 20px 40px rgba(27, 23, 18, 0.08);
+  clip-path: polygon(0 0, 100% 0, 100% 96%, 96% 100%, 0 100%);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink-dim);
+}
+
+.field input,
+.field select,
+.field textarea {
+  background: var(--bg);
+  border: 1px solid var(--surface-line);
+  color: var(--ink);
+  padding: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--gold);
+  outline: none;
+}
+
+.field__error {
+  color: var(--red-dark);
+  font-size: 0.82rem;
+}
+
+.contact__submit {
+  align-self: flex-start;
+  margin-top: 6px;
+}
+
+.contact__success {
+  background: rgba(217, 159, 43, 0.14);
+  border: 1px solid var(--gold-bright);
+  color: var(--gold);
+  padding: 14px 16px;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 860px) {
+  .contact__row {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 560px) {
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact__form {
+    padding: 24px;
+  }
+
+  .contact__submit {
+    align-self: stretch;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,55 @@
+<section class="gallery" id="galeria">
+  <div class="container">
+    <div class="section-heading">
+      <span class="tag">Catálogo</span>
+      <h2>Piezas hechas para pelear o para presumir</h2>
+      <p>
+        Filtra por lo que buscas: máscaras listas para subir al ring, piezas
+        de colección o ropa de la marca.
+      </p>
+    </div>
+
+    <div class="gallery__filters" role="tablist" aria-label="Filtrar catálogo">
+      @for (filter of filters; track filter.value) {
+        <button
+          type="button"
+          role="tab"
+          class="gallery__filter"
+          [class.gallery__filter--active]="activeFilter() === filter.value"
+          [attr.aria-selected]="activeFilter() === filter.value"
+          (click)="setFilter(filter.value)"
+        >
+          {{ filter.label }}
+        </button>
+      }
+    </div>
+
+    <div class="gallery__grid">
+      @for (product of visibleProducts(); track product.id) {
+        <article class="card">
+          <div class="card__art" [style.background]="product.colors[0]">
+            <svg viewBox="0 0 120 120" class="card__icon">
+              <path
+                d="M60 6 L110 30 V70 C110 96 88 114 60 116 C32 114 10 96 10 70 V30 Z"
+                [attr.fill]="product.colors[0]"
+              />
+              <path d="M60 6 L110 30 V70 C110 96 88 114 60 116 Z" [attr.fill]="product.colors[1]" opacity="0.5" />
+              <polygon points="36,52 54,52 45,68" [attr.fill]="product.colors[2]" />
+              <polygon points="66,52 84,52 75,68" [attr.fill]="product.colors[2]" />
+              <path d="M42 86 Q60 98 78 86" stroke="#f5efe1" stroke-width="3" fill="none" />
+            </svg>
+          </div>
+          <div class="card__body">
+            <span class="card__category">{{ product.categoryLabel }}</span>
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <div class="card__footer">
+              <span class="card__price">{{ product.price }}</span>
+              <a href="#contacto" class="card__link">Preguntar &gt;</a>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

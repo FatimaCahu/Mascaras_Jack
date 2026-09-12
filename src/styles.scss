@@ -1,0 +1,180 @@
+/* ===================================================================
+   MÁSCARAS JACK — sistema de diseño
+   Paleta inspirada en las máscaras clásicas de lucha libre: cuero
+   oscuro, rojo de arena, oro de campeón y un azul de acento.
+   No hay bordes redondeados: los cortes son angulares, como los
+   recortes de ojos y boca de una máscara cosida a mano.
+=================================================================== */
+
+:root {
+  /* Color — cartulina de cartel de lucha envejecida, con la tinta
+     roja/dorada de las lonas y programas de mano impresos */
+  --bg: #f1ecdd;
+  --bg-alt: #e8e0c9;
+  --surface: #fffdf8;
+  --surface-line: rgba(27, 23, 18, 0.14);
+  --ink: #1b1712;
+  --ink-dim: #6b6151;
+  --paper-deep: #0f0d0a;
+  --on-dark: #f5efe1;
+  --on-dark-dim: #c9beaa;
+  --red: #a91d2a;
+  --red-dark: #7c1520;
+  --gold: #9c6f22;
+  --gold-bright: #d99f2b;
+  --blue: #1f4d78;
+
+  /* Tipografía */
+  --font-display: 'Anton', 'Archivo Narrow', sans-serif;
+  --font-body: 'Archivo', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Layout */
+  --max-w: 1180px;
+  --edge: clip-path;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  color: var(--ink-dim);
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: var(--font-body);
+}
+
+::selection {
+  background: var(--red);
+  color: var(--on-dark);
+}
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 18px;
+  }
+}
+
+/* Etiqueta pequeña usada para categorías / secciones — sin
+   versalitas de relleno, solo cuando el contenido lo pide */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.tag::before {
+  content: '';
+  width: 18px;
+  height: 3px;
+  background: var(--gold);
+}
+
+/* Botón principal: corte angular, no rectángulo con esquinas suaves */
+.btn {
+  --btn-bg: var(--red);
+  --btn-fg: var(--on-dark);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 92% 100%, 0 100%);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover {
+  transform: translate(2px, -2px);
+}
+
+.btn:active {
+  transform: translate(0, 0);
+}
+
+.btn--ghost {
+  background: transparent;
+  border: 2px solid var(--ink-dim);
+  color: var(--ink);
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 92% 100%, 0 100%);
+}
+
+.btn--ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.section-heading {
+  max-width: 620px;
+}
+
+.section-heading h2 {
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  margin-top: 10px;
+}
+
+.section-heading p {
+  margin-top: 14px;
+  font-size: 1.05rem;
+}

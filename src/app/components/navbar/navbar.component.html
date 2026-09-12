@@ -1,0 +1,35 @@
+<header class="nav" [class.nav--scrolled]="isScrolled()">
+  <div class="container nav__row">
+    <a href="#inicio" class="nav__brand" (click)="closeMenu()">
+      <span class="nav__brand-mask" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none">
+          <path d="M20 2 L37 12 V26 C37 33 29 38 20 38 C11 38 3 33 3 26 V12 Z" fill="#a91d2a" />
+          <path d="M20 2 L37 12 V26 C37 33 29 38 20 38 Z" fill="#7c1520" />
+          <polygon points="10,17 16,17 13,22" fill="#1b1712" />
+          <polygon points="24,17 30,17 27,22" fill="#1b1712" />
+          <path d="M13 28 Q20 33 27 28" stroke="#d99f2b" stroke-width="2" fill="none" />
+        </svg>
+      </span>
+      <span class="nav__brand-text">Máscaras Jack</span>
+    </a>
+
+    <nav class="nav__links" [class.nav__links--open]="isOpen()">
+      @for (link of links; track link.href) {
+        <a [href]="link.href" (click)="closeMenu()">{{ link.label }}</a>
+      }
+      <a href="#contacto" class="btn nav__cta" (click)="closeMenu()">Pide la tuya</a>
+    </nav>
+
+    <button
+      class="nav__toggle"
+      type="button"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="isOpen()"
+      aria-label="Abrir menú de navegación"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>

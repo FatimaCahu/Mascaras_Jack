@@ -1,0 +1,26 @@
+<section class="about" id="nosotros">
+  <div class="container about__row">
+    <div class="about__text section-heading">
+      <span class="tag">Nuestro oficio</span>
+      <h2>De la piel al ring, todo pasa por nuestras manos</h2>
+      <p>
+        Jack empezó cosiendo máscaras para sus hermanos en la arena del
+        barrio. Hoy, su taller sigue siendo el mismo: pequeño, familiar, y
+        con cada pieza revisada puntada por puntada antes de salir por la
+        puerta.
+      </p>
+    </div>
+
+    <ol class="about__steps">
+      @for (step of steps; track step.title; let i = $index) {
+        <li class="about__step">
+          <span class="about__step-index">{{ i + 1 }}</span>
+          <div>
+            <h3>{{ step.title }}</h3>
+            <p>{{ step.text }}</p>
+          </div>
+        </li>
+      }
+    </ol>
+  </div>
+</section>
